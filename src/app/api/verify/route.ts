@@ -1,5 +1,5 @@
-import { deserializeProofResult } from "@/lib/serialize";
-import { getTicketProofRequest } from "@/lib/ticketProof";
+import { deserializeProofResult } from "@/utils/serialize";
+import { getTicketProofRequest } from "@/utils/ticketProof";
 import { gpcVerify } from "@pcd/gpc";
 import { NextRequest, NextResponse } from "next/server";
 import path from "path";
@@ -36,7 +36,10 @@ export async function POST(req: NextRequest) {
   );
 
   if (res === true) {
-    /// do the thing
+    // do the thing you want to do with the proof
+    // maybe you want to issue a discount code to the user, in that case:
+    // you need a backend database to store nullifiers and/or ticketIds and a place to store discount codes.
+    // See https://github.com/robknight/zupass-discount-codes/blob/main/src/app/api/verify/route.ts for an example.
   }
 
   return NextResponse.json({ verified: res });

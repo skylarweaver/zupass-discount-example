@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for commiting if needed)
 .env*
+# allow .env.example
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +41,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ai tools
+.cursor
+/src/generated/prisma
+.claude
+PROJECT_CREATION_GUIDE.md
+/references
+POD-GPC-ZAPI-DOCS.md

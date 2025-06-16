@@ -7,16 +7,16 @@ import {
   useParcnetClient,
 } from "@parcnet-js/app-connector-react";
 import { useState, useCallback } from "react";
-import { getTicketProofRequest } from "@/lib/ticketProof";
-import { ProveResult, serializeProofResult } from "@/lib/serialize";
+import { getTicketProofRequest } from "@/utils/ticketProof";
+import { ProveResult, serializeProofResult } from "@/utils/serialize";
 
 export default function Home() {
   return (
     <ParcnetClientProvider
       zapp={{
-        name: "Auth Test",
-        permissions: {
-          REQUEST_PROOF: { collections: ["Devcon SEA"] },
+        name: "Auth Test", // update the name of the zapp to something *unique*
+        permissions: { // update permissions based on what you want to collect and prove
+          REQUEST_PROOF: { collections: ["Devcon SEA"] }, // Update this to the collection name you want to use
           READ_PUBLIC_IDENTIFIERS: {},
         },
       }}
@@ -40,7 +40,7 @@ function RequestProof() {
     console.log(req.schema);
     const res = await z.gpc.prove({
       request: req.schema,
-      collectionIds: ["Devcon SEA"],
+      collectionIds: ["Devcon SEA"], // Update this to the collection ID you want to use
     });
 
     if (res.success) {
